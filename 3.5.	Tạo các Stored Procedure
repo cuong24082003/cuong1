@@ -1,0 +1,12 @@
+-		Thủ tục thống kê các sản phẩm có giá bán nhỏ hơn số tiền M cho trước: create proc SpDonGia (@M money)
+AS
+ 
+Begin
+Select MaSP,TenSp From SanPham S inner join DonGia D On S.MaDG=D.MaDG where D.GiaBan<@M
+End
+-	Thủ tục thống kê các nhân viên nhập hàng trong ngày S cho trước: create proc SpNhanVien(@S datetime)
+AS
+Begin
+Select N.MaNV,TenNV
+From NhanVien N inner join PhieuNhap P On N.MaNV=P.MaNV where P.NgayNhap=@S
+End
