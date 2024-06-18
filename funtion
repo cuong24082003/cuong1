@@ -1,0 +1,16 @@
+-		Hàm trả về số nợ của khách hàng tính đến thời điểm hiện tại: create function FnTienNo( @t char(10) )
+returns money as
+begin
+declare @kq money
+select @kq = sum(sotienno)
+from (ChiTietTT CT inner join PhieuThanhToan PTT on CT.MaPTT=PTT.MaPTT) inner join KhachHang KH on PTT.MaKH=KH.MaKH where KH.MaKH = @t
+return @kq 
+end
+-	Hàm tính đơn giá trung bình của các sản phẩm: create function FnDonGiaTB()
+returns  money
+As Begin
+Declare @giatb money
+select @giatb=AVG(D.GiaBan) from DonGia D
+return @giatb 
+End
+
