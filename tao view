@@ -1,0 +1,8 @@
+-View thống kê những sản phẩm hết hạn bảo hành: create view vwSanPhanHetHanBH
+AS
+select S.MaSp,S.TenSp
+From SanPham S inner join PhieuBaoHanh P on S.MaPhieuBH=P.MaPhieuBH where P.NgayKetThuc < GETDATE()
+- View thống kê sản phẩm bán chạy nhất: Create view VwBanChayNhat
+AS
+Select top 1 with ties S.MaSP,S.TenSP,Sum(SoLuong) Tong From SanPham S inner join ChiTietXuat C on S.MaSP=C.MaSP Group by S.MaSP,S.TenSP
+Order by Tong DESC
